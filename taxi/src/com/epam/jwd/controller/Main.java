@@ -9,7 +9,8 @@ import java.util.HashSet;
 
 import static com.epam.jwd.view.Input.inputInt;
 import static com.epam.jwd.view.Input.inputString;
-import static com.epam.jwd.view.Output.*;
+import static com.epam.jwd.view.Output.output;
+import static com.epam.jwd.view.Output.printCollection;
 
 public class Main {
     public static void main(String[] args) {
