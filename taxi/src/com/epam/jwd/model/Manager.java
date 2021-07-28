@@ -6,35 +6,35 @@ import java.util.HashSet;
 
 public class Manager {
 
-    public void add(ArrayList<BigCar> carList, BigCar car,BigCar car1, BigCar car2){
+    public void add(ArrayList<DeliveryCar> carList, DeliveryCar car,DeliveryCar car1, DeliveryCar car2){
         carList.add(car);
         carList.add(car1);
         carList.add(car2);
     }
 
-    public void addCar(ArrayList<BigCar> carList, String name, int price, int fuel, int maxSpeed,
-                       int priceBabyChair,
-                             int capacity) {
-        BigCar car = new BigCar(name, price, fuel, maxSpeed, priceBabyChair, capacity);
+    public void addCar(ArrayList<DeliveryCar> carList, String name, int price, int fuel, int maxSpeed,
+                       int priceBabyChair, int priceDelivery) {
+        DeliveryCar car = new DeliveryCar(name, price, fuel, maxSpeed, priceBabyChair,
+                priceDelivery);
         carList.add(car);
     }
 
-    public int calcPriceCarPark(ArrayList<BigCar> carList) {
+    public int calcPriceCarPark(ArrayList<DeliveryCar> carList) {
         int priceCarPark = 0;
-        for (BigCar car : carList) {
+        for (DeliveryCar car : carList) {
             priceCarPark += car.getPrice();
         }
         return priceCarPark;
     }
 
-    public void sortCarByFuel(ArrayList<BigCar> carList) {
+    public void sortCarByFuel(ArrayList<DeliveryCar> carList) {
         Collections.sort(carList);
     }
 
-    public  HashSet<BigCar> searchCarBySpeed(ArrayList<BigCar> carList, int startSpeed,
+    public  HashSet<DeliveryCar> searchCarBySpeed(ArrayList<DeliveryCar> carList, int startSpeed,
                                               int endSpeed) {
-        HashSet<BigCar> carsBySpeed = new HashSet<BigCar>();
-        for (BigCar car : carList) {
+        HashSet<DeliveryCar> carsBySpeed = new HashSet<DeliveryCar>();
+        for (DeliveryCar car : carList) {
             for (int i = startSpeed; i <= endSpeed; i++) {
                 if (car.getMaxSpeed() >= startSpeed && car.getMaxSpeed() <= endSpeed) {
                     carsBySpeed.add(car);

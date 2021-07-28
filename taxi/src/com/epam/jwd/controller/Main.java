@@ -1,6 +1,6 @@
 package com.epam.jwd.controller;
 
-import com.epam.jwd.model.BigCar;
+import com.epam.jwd.model.DeliveryCar;
 import com.epam.jwd.model.Manager;
 import com.epam.jwd.model.Validator;
 
@@ -16,11 +16,11 @@ public class Main {
     public static void main(String[] args) {
         int choice;
         Manager manager = new Manager();
-        ArrayList<BigCar> carList = new ArrayList<BigCar>();
+        ArrayList<DeliveryCar> carList = new ArrayList<DeliveryCar>();
 
-        BigCar car = new BigCar("BMW", 5000, 7, 150, 0, 5);
-        BigCar car1 = new BigCar("Toyota", 7000, 8, 170, 0, 5);
-        BigCar car2 = new BigCar("Opel", 3500, 5, 110, 100, 7);
+        DeliveryCar car = new DeliveryCar("BMW", 5000, 7, 150, 0, 100);
+        DeliveryCar car1 = new DeliveryCar("Toyota", 7000, 8, 170, 0, 0);
+        DeliveryCar car2 = new DeliveryCar("Opel", 3500, 5, 110, 100, 0);
 
         while (true) {
             output("Select: ");
@@ -45,7 +45,7 @@ public class Main {
                 case 3 -> {
                     int startSpeed = inputInt("Enter start speed:");
                     int endSpeed = inputInt("Enter end speed:");
-                    HashSet<BigCar> carsBySpeed = manager.searchCarBySpeed(carList, startSpeed,
+                    HashSet<DeliveryCar> carsBySpeed = manager.searchCarBySpeed(carList, startSpeed,
                             endSpeed);
                     printCollection(carsBySpeed);
                 }
@@ -55,9 +55,10 @@ public class Main {
                     int fuel = Validator.notEqualZero(inputInt("Enter fuel consumption: "));
                     int maxSpeed = Validator.notEqualZero(inputInt("Enter max speed: "));
                     int priceBabyChair = inputInt("Enter price baby chair(if there): ");
-                    int capacity = Validator.notEqualZero(inputInt("Enter car capacity: "));
+                    int priceDelivery = Validator.notEqualZero(inputInt("Enter delivery price: "));
 
-                    manager.addCar(carList, name, price, fuel, maxSpeed, priceBabyChair, capacity);
+                    manager.addCar(carList, name, price, fuel, maxSpeed, priceBabyChair,
+                            priceDelivery);
                 }
                 case 5 -> {
                     manager.add(carList, car, car1, car2);

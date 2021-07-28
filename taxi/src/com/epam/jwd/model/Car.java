@@ -2,6 +2,8 @@ package com.epam.jwd.model;
 
 import com.epam.jwd.view.Output;
 
+import java.util.Objects;
+
 public class Car implements Comparable <Car>{
     private String name;
     private int price;
@@ -55,6 +57,7 @@ public class Car implements Comparable <Car>{
         Output.output("Brake!!!");
     }
 
+
     @Override
     public int compareTo(Car o) {
         return this.fuel.compareTo(o.fuel);
@@ -64,5 +67,18 @@ public class Car implements Comparable <Car>{
     public String toString() {
         return "Car{" + "name='" + name + '\'' + ", price=" + price + ", fuel=" + fuel + ", " +
                 "maxSpeed=" + maxSpeed + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return price == car.price && maxSpeed == car.maxSpeed && name.equals(car.name) && fuel.equals(car.fuel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, fuel, maxSpeed);
     }
 }
